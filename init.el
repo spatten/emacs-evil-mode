@@ -8,7 +8,7 @@
 ; (package-initialize)
 
 ; (defvar my-packages '(paredit color-theme-solarized ido-ubiquitous smex textmate magit pcre2el rust-mode lorem-ipsum haml-mode ruby-mode flymake-ruby ruby-electric web-mode yaml-mode move-text writeroom-mode ruby-hash-syntax dash rubocop exec-path-from-shell))
-(defvar my-packages '(evil))
+(defvar my-packages '(evil evil-escape))
 
 ;; TODO
 
