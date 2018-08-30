@@ -37,12 +37,21 @@
   (kbd "C-h") nil
   (kbd "C-k") nil
   (kbd "C-j") nil)
+(eval-after-load "org-mode-map"
+  (define-key evil-normal-state-map "\C-k" nil))
 
+(eval-after-load "org-mode-map"
+  (define-key evil-motion-state-map "\C-k" nil))
 (define-key org-mode-map (kbd "C-k") nil)
 (define-key org-mode-map (kbd "C-j") nil)
 ;; (with-eval-after-load 'org (define-key evil-normal-state-map (kbd "C-k") nil))
 ;; I'm overriding C-h to move to a different window or buffer, so make C-c C-h do it instead
 (global-set-key (kbd "C-c C-h") 'help-command)
+
+(global-unset-key (kbd "C-h"))
+(global-unset-key (kbd "C-k"))
+(global-unset-key (kbd "C-l"))
+(global-unset-key (kbd "C-j"))
 
 (require 'navigate)
 (projectile-mode +1)
