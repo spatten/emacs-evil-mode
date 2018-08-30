@@ -5,10 +5,11 @@
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
-(define-key org-mode-map (kbd "<S-tab>") 'org-global-cycle)
+(define-key org-mode-map (kbd "backtab") 'org-global-cycle)
 
 (setq-default evil-escape-key-sequence "jk")
 (setq evil-want-C-i-jump nil) ;; makes tab work in org mode
+(setq evil-collection-outline-bind-tab-p nil) ;; don't set shift-tab to show-all in orgmode
 (setq evil-want-integration nil)
 (require 'navigate)
 (require 'evil)
@@ -78,3 +79,5 @@
 
 (evil-global-set-key 'motion' "H" 'evil-beginning-of-line)
 (evil-global-set-key 'motion' "L" 'evil-end-of-line)
+(global-set-key [f1] 'help-command)
+(global-set-key (kbd "C-x C-h") 'help-command)
