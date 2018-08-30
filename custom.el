@@ -31,7 +31,6 @@
 (require 'projectile-rails)
 (projectile-rails-global-mode)
 
-
 ;; line-wrapping everywhere
 (global-visual-line-mode t)
 
@@ -57,8 +56,9 @@
   kept-old-versions 2
   version-control t)
 
-;; turn off icons at the top of the window
+;; turn off icons and menu at the top of the window
 (tool-bar-mode -1)
+(menu-bar-mode -1)
 
 (setq initial-scratch-message "")
 (setq initial-major-mode 'text-mode)
