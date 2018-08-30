@@ -6,7 +6,6 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'org-switchb)
-(define-key org-mode-map (kbd "backtab") 'org-global-cycle)
 (setq org-log-done t)
 
 (setq-default evil-escape-key-sequence "jk")
@@ -19,11 +18,11 @@
 (evil-escape-mode 1)
 (evil-collection-init)
 
-(require 'evil-org)
-(add-hook 'org-mode-hook 'evil-org-mode)
-(evil-org-set-key-theme '(navigation insert textobjects additional calendar))
-(require 'evil-org-agenda)
-(evil-org-agenda-set-keys)
+;; (require 'evil-org)
+;; (add-hook 'org-mode-hook 'evil-org-mode)
+;; (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
+;; (require 'evil-org-agenda)
+;; (evil-org-agenda-set-keys)
 
 (require 'evil-surround)
 (global-evil-surround-mode 1)
