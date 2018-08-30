@@ -1,5 +1,7 @@
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                         ("marmalade" . "https://marmalade-repo.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
 
 ; (add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
@@ -8,7 +10,7 @@
 ; (package-initialize)
 
 ; (defvar my-packages '(paredit color-theme-solarized ido-ubiquitous smex textmate magit pcre2el rust-mode lorem-ipsum haml-mode ruby-mode flymake-ruby ruby-electric web-mode yaml-mode move-text writeroom-mode ruby-hash-syntax dash rubocop exec-path-from-shell))
-(defvar my-packages '(evil evil-escape))
+(defvar my-packages '(evil evil-escape navigate evil-collection projectile-rails org xclip rubocop ruby-mode flymake-ruby ruby-electric))
 
 ;; TODO
 
