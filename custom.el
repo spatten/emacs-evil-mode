@@ -75,3 +75,6 @@
 
 (require 'evil-surround)
 (global-evil-surround-mode 1)
+
+(evil-global-set-key 'motion' "H" 'evil-beginning-of-line)
+(evil-global-set-key 'motion' "L" 'evil-end-of-line)
