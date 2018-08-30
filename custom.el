@@ -2,29 +2,49 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (require 'org)
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
-(setq org-log-done t)
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-cb" 'org-switchb)
 (define-key org-mode-map (kbd "backtab") 'org-global-cycle)
+(setq org-log-done t)
 
 (setq-default evil-escape-key-sequence "jk")
 (setq evil-want-C-i-jump nil) ;; makes tab work in org mode
 (setq evil-collection-outline-bind-tab-p nil) ;; don't set shift-tab to show-all in orgmode
 (setq evil-want-integration nil)
-(require 'navigate)
 (require 'evil)
 (evil-mode 1)
 
 (evil-escape-mode 1)
 (evil-collection-init)
-(evil-define-key 'normal org-mode-map (kbd "<S-tab>") #'org-global-cycle)
 
-(require 'org)
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cc" 'org-capture)
-(global-set-key "\C-cb" 'org-switchb)
+(require 'evil-org)
+(add-hook 'org-mode-hook 'evil-org-mode)
+(evil-org-set-key-theme '(navigation insert textobjects additional calendar))
+(require 'evil-org-agenda)
+(evil-org-agenda-set-keys)
 
+(require 'evil-surround)
+(global-evil-surround-mode 1)
+
+;; In normal mode, H goes to beginning of line, L to end
+(evil-global-set-key 'motion' "H" 'evil-beginning-of-line)
+(evil-global-set-key 'motion' "L" 'evil-end-of-line)
+
+(evil-define-key 'normal evil-org-mode-map
+  (kbd "C-l") nil
+  (kbd "C-h") nil
+  (kbd "C-k") nil
+  (kbd "C-j") nil)
+
+(define-key org-mode-map (kbd "C-k") nil)
+(define-key org-mode-map (kbd "C-j") nil)
+;; (with-eval-after-load 'org (define-key evil-normal-state-map (kbd "C-k") nil))
+;; I'm overriding C-h to move to a different window or buffer, so make C-c C-h do it instead
+(global-set-key (kbd "C-c C-h") 'help-command)
+
+(require 'navigate)
 (projectile-mode +1)
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
@@ -74,10 +94,7 @@
                             (?\" . ?\")
                             ) )
 
-(require 'evil-surround)
-(global-evil-surround-mode 1)
 
-(evil-global-set-key 'motion' "H" 'evil-beginning-of-line)
-(evil-global-set-key 'motion' "L" 'evil-end-of-line)
-(global-set-key [f1] 'help-command)
-(global-set-key (kbd "C-x C-h") 'help-command)
+;; bindings for the move-text package
+(global-set-key [s-M-down] 'move-text-down)
+(global-set-key [s-M-up] 'move-text-up)
