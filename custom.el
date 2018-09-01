@@ -106,3 +106,5 @@
 ;; bindings for the move-text package
 (global-set-key [s-M-down] 'move-text-down)
 (global-set-key [s-M-up] 'move-text-up)
+
+(load (concat user-emacs-directory "work-logs.el"))
