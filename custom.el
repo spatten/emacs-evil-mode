@@ -107,3 +107,15 @@
 (move-text-default-bindings)
 
 (load (concat user-emacs-directory "work-logs.el"))
+
+;; make sentence motion work with single-space sentences
+(setf sentence-end-double-space nil)
+
+;; brew install aspell first
+(setq ispell-program-name "/usr/local/bin/aspell")
+(setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_GB"))
+
+(require 'darkroom)
+;; (add-hook 'darkroom-mode-hook 'flyspell-mode)
+
+(global-set-key (kbd "M-=") 'count-words)
