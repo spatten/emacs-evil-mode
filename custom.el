@@ -37,6 +37,12 @@
   (kbd "C-h") nil
   (kbd "C-k") nil
   (kbd "C-j") nil)
+
+;; Make C-j and C-k do the tmux thing in org mode and outline mode
+(evil-define-key 'normal outline-mode-map
+  (kbd "C-j") nil
+  (kbd "C-k") nil)
+
 (eval-after-load "org-mode-map"
   (define-key evil-normal-state-map "\C-k" nil))
 
