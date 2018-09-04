@@ -33,7 +33,7 @@
 (global-evil-surround-mode 1)
 
 ;; In normal mode, H goes to beginning of line, L to end
-(evil-global-set-key 'motion' "H" 'evil-beginning-of-line)
+(evil-global-set-key 'motion' "H" 'evil-first-non-blank)
 (evil-global-set-key 'motion' "L" 'evil-end-of-line)
 
 (evil-define-key 'normal evil-org-mode-map
