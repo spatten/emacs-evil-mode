@@ -8,6 +8,8 @@
 (global-set-key "\C-cb" 'org-switchb)
 (setq org-log-done t)
 
+(global-set-key "\C-cr" 'revert-buffer)
+
 (setq-default evil-escape-delay 0.2)
 (setq-default evil-escape-key-sequence "jk")
 (setq evil-want-C-i-jump nil) ;; makes tab work in org mode
