@@ -25,6 +25,8 @@
 ;; (require 'evil-org-agenda)
 ;; (evil-org-agenda-set-keys)
 
+(add-hook 'markdown-mode-hook 'darkroom-mode)
+
 (require 'evil-surround)
 (global-evil-surround-mode 1)
 
