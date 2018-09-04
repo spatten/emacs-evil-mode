@@ -110,10 +110,14 @@
                             ) )
 
 
+;; type C-\ to go into "latin-postfix" mode. This allows you to type a" and get ä or a` => à or a' => á. C-\ to get back out
+(setq default-input-method 'latin-postfix)
+
 ;; bindings for the move-text package
 (move-text-default-bindings)
 
 (load (concat user-emacs-directory "work-logs.el"))
+(load (concat user-emacs-directory "fanfic.el"))
 
 ;; make sentence motion work with single-space sentences
 (setf sentence-end-double-space nil)
@@ -121,8 +125,10 @@
 ;; brew install aspell first
 (setq ispell-program-name "/usr/local/bin/aspell")
 (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_GB"))
+;; Use M-$ to spell-check a word
 
 (require 'darkroom)
+;; (add-hook 'darkroom-mode-hook (lambda () (make-variable-buffer-local 'default-input-method) (setq default-input-method 'latin-postfix)))
 ;; (add-hook 'darkroom-mode-hook 'flyspell-mode)
 
 (global-set-key (kbd "M-=") 'count-words)
