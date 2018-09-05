@@ -10,7 +10,7 @@
 ; (package-initialize)
 
 ; (defvar my-packages '(paredit color-theme-solarized ido-ubiquitous smex textmate magit pcre2el rust-mode lorem-ipsum haml-mode ruby-mode flymake-ruby ruby-electric web-mode yaml-mode move-text writeroom-mode ruby-hash-syntax dash rubocop exec-path-from-shell))
-(defvar my-packages '(evil evil-escape navigate evil-collection projectile-rails org xclip rubocop ruby-mode flymake-ruby ruby-electric evil-surround markdown-mode move-text darkroom))
+(defvar my-packages '(evil evil-escape navigate evil-collection projectile-rails org xclip rubocop ruby-mode flymake-ruby ruby-electric evil-surround markdown-mode move-text darkroom magit web-mode))
 
 ;; TODO
 
@@ -31,7 +31,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (evil))))
+)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

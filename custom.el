@@ -8,7 +8,7 @@
 (global-set-key "\C-cb" 'org-switchb)
 (setq org-log-done t)
 
-(global-set-key "\C-cr" 'revert-buffer)
+(global-set-key "\C-cv" 'revert-buffer)
 
 (setq-default evil-escape-delay 0.2)
 (setq-default evil-escape-key-sequence "jk")
@@ -36,6 +36,7 @@
 (evil-global-set-key 'motion' "H" 'evil-first-non-blank)
 (evil-global-set-key 'motion' "L" 'evil-end-of-line)
 
+(evil-global-set-key 'motion "L" 'evil-end-of-line)
 (evil-define-key 'normal evil-org-mode-map
   (kbd "C-l") nil
   (kbd "C-h") nil
@@ -57,6 +58,7 @@
 ;; (with-eval-after-load 'org (define-key evil-normal-state-map (kbd "C-k") nil))
 ;; I'm overriding C-h to move to a different window or buffer, so make C-c C-h do it instead
 (global-set-key (kbd "C-c C-h") 'help-command)
+(global-set-key (kbd "C-x C-h") 'help-command)
 
 (global-unset-key (kbd "C-h"))
 (global-unset-key (kbd "C-k"))
@@ -118,7 +120,18 @@
 (setq default-input-method 'latin-postfix)
 
 ;; bindings for the move-text package
-(move-text-default-bindings)
+;; these two lines are necessary before defining meta-down or meta-up
+;; https://stackoverflow.com/questions/4351044/binding-m-up-m-down-in-emacs-23-1-1
+;; (define-key input-decode-map "\e\eOA" [(meta up)])
+;; (define-key input-decode-map "\e\eOB" [(meta down)])
+;; (global-set-key [(meta up)] 'move-text-up)
+;; (global-set-key [(meta down)] 'move-text-down)
+;; (global-set-key (kbd "<M-up>") 'move-text-up)
+;; (global-set-key (kbd "<M-down>") 'move-text-down)
+
+;; I think only these last two are actually required
+(global-set-key (kbd "ESC <up>") 'move-text-up)
+(global-set-key (kbd "ESC <down>") 'move-text-down)
 
 (load (concat user-emacs-directory "work-logs.el"))
 (load (concat user-emacs-directory "fanfic.el"))
@@ -136,3 +149,9 @@
 ;; (add-hook 'darkroom-mode-hook 'flyspell-mode)
 
 (global-set-key (kbd "M-=") 'count-words)
+
+;; web-mode setup
+;; (require 'web-mode)
+;; (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
