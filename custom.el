@@ -9,6 +9,7 @@
 (setq org-log-done t)
 
 (global-set-key "\C-cv" 'revert-buffer)
+(global-set-key (kbd "C-x g") 'magit-status)
 
 (setq-default evil-escape-delay 0.2)
 (setq-default evil-escape-key-sequence "jk")
