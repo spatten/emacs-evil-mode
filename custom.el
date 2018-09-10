@@ -138,6 +138,7 @@
 
 (load (concat user-emacs-directory "work-logs.el"))
 (load (concat user-emacs-directory "fanfic.el"))
+(load (concat user-emacs-directory "pry.el"))
 
 ;; make sentence motion work with single-space sentences
 (setf sentence-end-double-space nil)
