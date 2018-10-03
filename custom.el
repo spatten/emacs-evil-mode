@@ -2,6 +2,8 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq-default indent-tabs-mode nil)
 
+(require 'fringe)
+
 (require 'org)
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
@@ -179,6 +181,7 @@
 (setf sentence-end-double-space nil)
 
 (global-flycheck-mode)
+(setq-default flycheck-indication-mode 'left-fringe)
 
 ;; brew install aspell first
 (setq ispell-program-name "/usr/local/bin/aspell")
