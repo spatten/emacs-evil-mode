@@ -1,5 +1,6 @@
 ;; Always able to answer 'y' instead of 'yes'
 (defalias 'yes-or-no-p 'y-or-n-p)
+(setq-default indent-tabs-mode nil)
 
 (require 'org)
 (global-set-key "\C-cl" 'org-store-link)
@@ -10,7 +11,7 @@
 
 (global-set-key "\C-cv" 'revert-buffer)
 (global-set-key (kbd "C-x g") 'magit-status)
-
+;; (global-linum-mode 1)
 (setq-default evil-escape-delay 0.2)
 (setq-default evil-escape-key-sequence "jk")
 (setq evil-want-C-i-jump nil) ;; makes tab work in org mode
@@ -19,6 +20,8 @@
 (require 'evil)
 (evil-mode 1)
 
+;; hitting C-x C-s puts you into normal mode
+(add-hook 'after-save-hook 'evil-normal-state)
 (evil-escape-mode 1)
 (evil-collection-init)
 
@@ -33,6 +36,12 @@
 (require 'evil-surround)
 (global-evil-surround-mode 1)
 
+;; make S-~ surround with ~~~ in org-mode and Markdown
+(add-hook 'markdown-mode-hook (lambda ()
+		    (push '(?~ . ("~~~" . "~~~")) evil-surround-pairs-alist)))
+
+(add-hook 'org-mode-hook (lambda ()
+		    (push '(?~ . ("~~~" . "~~~")) evil-surround-pairs-alist)))
 ;; In normal mode, H goes to beginning of line, L to end
 (evil-global-set-key 'motion' "H" 'evil-first-non-blank)
 (evil-global-set-key 'motion' "L" 'evil-end-of-line)
@@ -82,9 +91,34 @@
 ;; delete trailing whitespace before saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; ruby
+;; don't insert a magic "coding: utf-8" comment at the top of every file
+(setq ruby-insert-encoding-magic-comment nil)
 ;; rubocop
 (require 'rubocop)
 (add-hook 'ruby-mode-hook 'rubocop-mode)
+
+;; make underscores count as words
+;; For python
+(add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+;; For ruby
+(add-hook 'ruby-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+;; For Javascript
+(add-hook 'js2-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+
+(require 'haml-mode)
+
+;; JS
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+
+;; Coffeescript
+(require 'coffee-mode)
+;; This gives you a tab of 2 spaces
+(custom-set-variables '(coffee-tab-width 2))
+
+;; YAML
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 
 ;; Use OS X copy/paste buffers
 (xclip-mode 1)
@@ -139,9 +173,12 @@
 (load (concat user-emacs-directory "work-logs.el"))
 (load (concat user-emacs-directory "fanfic.el"))
 (load (concat user-emacs-directory "pry.el"))
+(load (concat user-emacs-directory "custom-nav.el"))
 
 ;; make sentence motion work with single-space sentences
 (setf sentence-end-double-space nil)
+
+(global-flycheck-mode)
 
 ;; brew install aspell first
 (setq ispell-program-name "/usr/local/bin/aspell")
@@ -159,3 +196,14 @@
 ;; (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+;; https://stackoverflow.com/questions/3669511/the-function-to-show-current-files-full-path-in-mini-buffer
+(defun show-file-name ()
+  "Show the full path file name in the minibuffer."
+  (interactive)
+  (message (buffer-file-name)))
+
+(global-set-key (kbd "C-c f f") 'show-file-name) ; Or any other key you want
+
+(setq inhibit-splash-screen t)
+(open-latest-log)
