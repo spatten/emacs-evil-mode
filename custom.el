@@ -135,7 +135,7 @@
 (load (concat user-emacs-directory "work-logs.el"))
 (load (concat user-emacs-directory "fanfic.el"))
 (load (concat user-emacs-directory "pry.el"))
-(load (concat user-emacs-directory "custom-nav.el"))
+(load (concat user-emacs-directory "navigation.el"))
 (load (concat user-emacs-directory "org-mode-mappings.el"))
 
 ;; make sentence motion work with single-space sentences
