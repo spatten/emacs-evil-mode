@@ -23,3 +23,16 @@
   (local-set-key (kbd "C-c C-c r") 'binding-remote-pry))
 
 (add-hook 'ruby-mode-hook 'pry-keybindings)
+
+(defun python-debugger ()
+  "python debugger line"
+  (interactive)
+  (save-excursion
+    (end-of-line)
+    (insert "\nimport pdb; pdb.set_trace()")
+    (indent-according-to-mode)
+    ))
+(defun python-debugger-keybindings ()
+  "for use in Python mode"
+  (local-set-key (kbd "C-c r p") 'python-debugger))
+(add-hook 'python-mode-hook 'python-debugger-keybindings)
