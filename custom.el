@@ -41,7 +41,7 @@
 
 (require 'navigate)
 (projectile-mode +1)
-(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "M-p") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 (require 'projectile-rails)
@@ -142,7 +142,6 @@
 (load (concat user-emacs-directory "fanfic.el"))
 (load (concat user-emacs-directory "pry.el"))
 (load (concat user-emacs-directory "navigation.el"))
-(load (concat user-emacs-directory "org-mode-mappings.el"))
 
 ;; make sentence motion work with single-space sentences
 (setf sentence-end-double-space nil)
@@ -189,5 +188,6 @@
 
 (global-set-key (kbd "C-c f f") 'show-file-name) ; Or any other key you want
 
+(load (concat user-emacs-directory "org-mode-mappings.el"))
 (setq inhibit-splash-screen t)
 (open-latest-log)
