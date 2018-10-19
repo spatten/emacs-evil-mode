@@ -8,7 +8,7 @@
 ; (package-initialize)
 
 ; (defvar my-packages '(paredit color-theme-solarized ido-ubiquitous smex textmate magit pcre2el rust-mode lorem-ipsum haml-mode ruby-mode flymake-ruby ruby-electric web-mode yaml-mode move-text writeroom-mode ruby-hash-syntax dash rubocop exec-path-from-shell))
-(defvar my-packages '(use-package evil evil-escape navigate evil-collection projectile-rails org xclip rubocop ruby-mode flymake-ruby ruby-electric evil-surround markdown-mode move-text darkroom magit web-mode ag yaml-mode ripgrep lorem-ipsum haml-mode flycheck coffee-mode))
+(defvar my-packages '(use-package evil evil-escape navigate evil-collection projectile-rails org xclip rubocop ruby-mode flymake-ruby ruby-electric evil-surround markdown-mode move-text darkroom magit web-mode ag yaml-mode ripgrep lorem-ipsum haml-mode flycheck coffee-mode js2-mode exec-path-from-shell))
 
 ;; TODO
 
@@ -34,7 +34,15 @@
  '(coffee-tab-width 2)
  '(package-selected-packages
    (quote
-    (ag xclip writeroom-mode web-mode ruby-end ruby-electric rubocop org-evil navigate move-text markdown-mode magit helm flymake-ruby evil-surround evil-rails evil-org evil-escape evil-collection darkroom))))
+    (ag xclip writeroom-mode web-mode ruby-end ruby-electric rubocop org-evil navigate move-text markdown-mode magit helm flymake-ruby evil-surround evil-rails evil-org evil-escape evil-collection darkroom)))
+ '(safe-local-variable-values
+   (quote
+    ((eval progn
+           (add-to-list
+            (quote exec-path)
+            (concat
+             (locate-dominating-file default-directory ".dir-locals.el")
+             "app/client/node_modules/.bin/")))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
