@@ -38,12 +38,11 @@
 (require 'evil-surround)
 (global-evil-surround-mode 1)
 
-
 (require 'navigate)
 (projectile-mode +1)
 (define-key projectile-mode-map (kbd "M-p") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-
+(setq projectile-rails-keymap-prefix (kbd "M-r"))
 (require 'projectile-rails)
 (projectile-rails-global-mode)
 
@@ -59,6 +58,8 @@
 ;; rubocop
 (require 'rubocop)
 (add-hook 'ruby-mode-hook 'rubocop-mode)
+(require 'ruby-block)
+(ruby-block-mode t)
 
 ;; make underscores count as words
 ;; For python
@@ -142,6 +143,7 @@
 (load (concat user-emacs-directory "fanfic.el"))
 (load (concat user-emacs-directory "pry.el"))
 (load (concat user-emacs-directory "navigation.el"))
+(load (concat user-emacs-directory "leanpub.el"))
 
 ;; make sentence motion work with single-space sentences
 (setf sentence-end-double-space nil)
@@ -190,4 +192,4 @@
 
 (load (concat user-emacs-directory "org-mode-mappings.el"))
 (setq inhibit-splash-screen t)
-(open-latest-log)
+;; (open-latest-log)

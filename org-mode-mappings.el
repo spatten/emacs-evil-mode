@@ -3,12 +3,12 @@
 		    (push '(?~ . ("~~~" . "~~~")) evil-surround-pairs-alist)))
 
 (add-hook 'org-mode-hook (lambda ()
-		    (push '(?~ . ("~~~" . "~~~")) evil-surround-pairs-alist)))
+                           (push '(?~ . ("#+BEGIN_SRC sh" . "#+END_SRC")) evil-surround-pairs-alist)))
 ;; In normal mode, H goes to beginning of line, L to end
 (evil-global-set-key 'motion' "H" 'evil-first-non-blank)
 (evil-global-set-key 'motion' "L" 'evil-end-of-line)
 
-(evil-global-set-key 'normal "gc" 'comment-line)
+(evil-global-set-key 'normal "gc" 'comment-dwim)
 
 (evil-global-set-key 'motion "L" 'evil-end-of-line)
 (evil-define-key 'normal evil-org-mode-map
