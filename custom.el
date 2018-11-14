@@ -22,6 +22,9 @@
 (require 'evil)
 (evil-mode 1)
 
+(require 'evil-matchit)
+(global-evil-matchit-mode 1)
+
 ;; hitting C-x C-s puts you into normal mode
 (add-hook 'after-save-hook 'evil-normal-state)
 (evil-escape-mode 1)
