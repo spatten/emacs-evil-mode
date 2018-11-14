@@ -8,7 +8,8 @@
 (evil-global-set-key 'motion' "H" 'evil-first-non-blank)
 (evil-global-set-key 'motion' "L" 'evil-end-of-line)
 
-(evil-global-set-key 'normal "gc" 'comment-dwim)
+(evil-global-set-key 'normal "gc" 'comment-line)
+(evil-global-set-key 'visual "gc" 'comment-dwim)
 
 (evil-global-set-key 'motion "L" 'evil-end-of-line)
 (evil-define-key 'normal evil-org-mode-map
