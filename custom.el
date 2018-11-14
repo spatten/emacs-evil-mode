@@ -151,6 +151,9 @@
 ;; make sentence motion work with single-space sentences
 (setf sentence-end-double-space nil)
 
+;; get rid of the annoying Lisp flycheck warnings
+(with-eval-after-load 'flycheck
+  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
 (global-flycheck-mode)
 (setq-default flycheck-indication-mode 'left-fringe)
 
