@@ -157,6 +157,7 @@
 (load (concat user-emacs-directory "pry.el"))
 (load (concat user-emacs-directory "navigation.el"))
 (load (concat user-emacs-directory "leanpub.el"))
+(load (concat user-emacs-directory "ruby.el"))
 
 ;; make sentence motion work with single-space sentences
 (setf sentence-end-double-space nil)
