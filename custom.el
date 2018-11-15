@@ -109,6 +109,9 @@
 (setq ring-bell-function 'ignore)
 ;; Make backup (foo~) files in ~/.emacs-saves
 (setq backup-directory-alist `(("." . "~/.emacs-saves")))
+;; Make auto-save #foo# files go in ~/.emacs-saves too
+(setq auto-save-file-name-transforms
+  `((".*" "~/.emacs-saves/" t)))
 ;; Slow but safe
 (setq backup-by-copying t)
 ;; keep more than one backup of each file
