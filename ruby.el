@@ -9,3 +9,7 @@
     (insert (mapconcat 'identity
                        (split-string current-region-string ", ") ",\n")))
   (evil-indent beg end))
+
+;; send selected text to your Rails console
+(evil-global-set-key 'visual "gr" 'ruby-send-region)
+(evil-global-set-key 'visual "gR" 'ruby-send-region-and-go)
