@@ -216,3 +216,25 @@
 (load (concat user-emacs-directory "org-mode-mappings.el"))
 (setq inhibit-splash-screen t)
 ;; (open-latest-log)
+
+;; Make C-h and such work in insert mode too.
+(define-key evil-insert-state-map
+            (kbd "C-h")
+            (lambda ()
+              (interactive)
+              (tmux-navigate "left")))
+(define-key evil-insert-state-map
+            (kbd "C-j")
+            (lambda ()
+              (interactive)
+              (tmux-navigate "down")))
+(define-key evil-insert-state-map
+            (kbd "C-k")
+            (lambda ()
+              (interactive)
+              (tmux-navigate "up")))
+(define-key evil-insert-state-map
+            (kbd "C-l")
+            (lambda ()
+              (interactive)
+              (tmux-navigate "right")))
