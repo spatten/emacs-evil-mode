@@ -13,3 +13,5 @@
 ;; send selected text to your Rails console
 (evil-global-set-key 'visual "gr" 'ruby-send-region)
 (evil-global-set-key 'visual "gR" 'ruby-send-region-and-go)
+(evil-global-set-key 'normal "gr" 'ruby-send-line)
+(evil-global-set-key 'normal "gR" 'ruby-send-line-and-go)
