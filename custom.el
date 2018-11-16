@@ -63,6 +63,9 @@
 (add-hook 'ruby-mode-hook 'rubocop-mode)
 (require 'ruby-block)
 (ruby-block-mode t)
+(autoload 'inf-ruby-minor-mode "inf-ruby" "Run an inferior Ruby process" t)
+(autoload 'inf-ruby-keys "inf-ruby" "Set local key defs for inf-ruby in ruby-mode")
+(add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
 
 ;; make underscores count as words
 ;; For python
