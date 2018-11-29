@@ -15,6 +15,7 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 ;; (global-linum-mode 1)
 (setq-default evil-escape-delay 0.2)
+
 (setq-default evil-escape-key-sequence "jk")
 (setq evil-want-C-i-jump nil) ;; makes tab work in org mode
 (setq evil-collection-outline-bind-tab-p nil) ;; don't set shift-tab to show-all in orgmode
@@ -40,6 +41,11 @@
 
 (require 'evil-surround)
 (global-evil-surround-mode 1)
+
+(require 'vimish-fold)
+(evil-global-set-key 'normal "zf" #'vimish-fold)
+(evil-global-set-key 'normal "zv" #'vimish-fold-delete)
+(evil-global-set-key 'normal "z." #'vimish-fold-toggle)
 
 (require 'navigate)
 (projectile-mode +1)
