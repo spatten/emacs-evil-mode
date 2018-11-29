@@ -1,3 +1,30 @@
+;; Make evil-join work when in a comment block
+;; from https://github.com/blaenk/dots/blob/135cf050a28249deb1dc653ef149fb0d7c2c6e1b/emacs/.emacs.d/inits/conf/evil.el#L138-L167
+;; linked to from this discussion: https://github.com/emacs-evil/evil/issues/606
+  (evil-define-operator my-evil-join (beg end)
+    "Join the selected lines."
+    :motion evil-line
+    (let* ((count (count-lines beg end))
+           ;; we join pairs at a time
+           (count (if (> count 1) (1- count) count))
+           ;; the mark at the middle of the joined pair of lines
+           (fixup-mark (make-marker)))
+      (dotimes (var count)
+        (if (and (bolp) (eolp))
+            (join-line 1)
+          (let* ((end (line-beginning-position 3))
+                 (fill-column (1+ (- end beg))))
+            ;; save the mark at the middle of the pair
+            (set-marker fixup-mark (line-end-position))
+            ;; join it via fill
+            (fill-region-as-paragraph beg end)
+            ;; jump back to the middle
+            (goto-char fixup-mark)
+            ;; context-dependent whitespace fixup
+            (fixup-whitespace))))
+      ;; remove the mark
+      (set-marker fixup-mark nil)))
+(evil-global-set-key 'normal "J" 'my-evil-join)
 ;; make S-~ surround with ~~~ in org-mode and Markdown
 (add-hook 'markdown-mode-hook (lambda ()
 		    (push '(?~ . ("~~~" . "~~~")) evil-surround-pairs-alist)))
