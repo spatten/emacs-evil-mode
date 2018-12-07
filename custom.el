@@ -46,7 +46,7 @@
 (require 'vimish-fold)
 (evil-global-set-key 'normal "zf" #'vimish-fold)
 (evil-global-set-key 'normal "zv" #'vimish-fold-delete)
-(evil-global-set-key 'normal "z." #'vimish-fold-toggle)
+;; (evil-global-set-key 'normal "z." #'vimish-fold-toggle)
 
 (require 'navigate)
 (projectile-mode +1)
