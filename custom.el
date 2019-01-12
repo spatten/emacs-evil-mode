@@ -19,7 +19,8 @@
 (setq-default evil-escape-key-sequence "jk")
 (setq evil-want-C-i-jump nil) ;; makes tab work in org mode
 (setq evil-collection-outline-bind-tab-p nil) ;; don't set shift-tab to show-all in orgmode
-(setq evil-want-integration nil)
+(setq evil-want-integration t)
+(setq evil-want-keybinding nil)
 (require 'evil)
 (evil-mode 1)
 
