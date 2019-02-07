@@ -8,7 +8,7 @@
 ; (package-initialize)
 
 ; (defvar my-packages '(paredit color-theme-solarized ido-ubiquitous smex textmate magit pcre2el rust-mode lorem-ipsum haml-mode ruby-mode flymake-ruby ruby-electric web-mode yaml-mode move-text writeroom-mode ruby-hash-syntax dash rubocop exec-path-from-shell))
-(defvar my-packages '(use-package evil navigate evil-collection projectile-rails org xclip rubocop ruby-mode flymake-ruby ruby-electric inf-ruby ruby-hash-syntax evil-surround markdown-mode move-text darkroom magit web-mode ag yaml-mode ripgrep lorem-ipsum haml-mode flycheck coffee-mode js2-mode exec-path-from-shell ruby-block evil-matchit vimish-fold systemd ruby-end))
+(defvar my-packages '(use-package evil navigate evil-collection projectile-rails org xclip rubocop ruby-mode flymake-ruby ruby-electric inf-ruby ruby-hash-syntax evil-surround markdown-mode move-text darkroom magit web-mode ag yaml-mode ripgrep lorem-ipsum haml-mode flycheck coffee-mode js2-mode exec-path-from-shell ruby-block evil-matchit vimish-fold systemd ruby-end rspec-mode))
 
 ;; TODO
 

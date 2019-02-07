@@ -64,6 +64,8 @@
 ;; delete trailing whitespace before saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; scroll output in rspec-mode buffers
+(setq compilation-scroll-output t)
 ;; ruby
 ;; don't insert a magic "coding: utf-8" comment at the top of every file
 (setq ruby-insert-encoding-magic-comment nil)
