@@ -17,7 +17,6 @@
 (setq-default evil-escape-delay 0.2)
 (setq-default evil-escape-case-insensitive-key-sequence 't)
 (setq-default evil-escape-key-sequence "jk")
-(setq evil-auto-indent nil) ;; this should get rid of the indentation in org mode
 (setq evil-want-C-i-jump nil) ;; makes tab work in org mode
 (setq evil-collection-outline-bind-tab-p nil) ;; don't set shift-tab to show-all in orgmode
 (setq evil-want-integration t)
@@ -36,6 +35,7 @@
 
 (require 'evil-org)
 (add-hook 'org-mode-hook 'evil-org-mode)
+(add-hook 'org-mode-hook (lambda () (setq evil-auto-indent nil)));; this should get rid of the indentation in org mode
 (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
 ;; (require 'evil-org-agenda)
 ;; (evil-org-agenda-set-keys)
