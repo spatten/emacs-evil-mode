@@ -34,5 +34,18 @@
     ))
 (defun python-debugger-keybindings ()
   "for use in Python mode"
-  (local-set-key (kbd "C-c r p") 'python-debugger))
+  (local-set-key (kbd "C-c C-c p") 'python-debugger))
 (add-hook 'python-mode-hook 'python-debugger-keybindings)
+
+(defun javascript-debugger ()
+  "javascript debugger line"
+  (interactive)
+  (save-excursion
+    (end-of-line)
+    (insert "\ndebugger")
+    (indent-according-to-mode)
+    ))
+(defun javascript-debugger-keybindings ()
+  "for use in Javascript mode"
+  (local-set-key (kbd "C-c C-c p") 'javascript-debugger))
+(add-hook 'js2-mode-hook 'javascript-debugger-keybindings)
