@@ -2,6 +2,9 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq-default indent-tabs-mode nil)
 
+;; default to opening windows with a vertical split
+;; (setq split-width-threshold 10)
+
 (require 'fringe)
 
 (require 'org)
@@ -40,7 +43,7 @@
 ;; (require 'evil-org-agenda)
 ;; (evil-org-agenda-set-keys)
 
-(add-hook 'markdown-mode-hook 'darkroom-mode)
+;; (add-hook 'markdown-mode-hook 'darkroom-mode)
 
 (require 'evil-surround)
 (global-evil-surround-mode 1)
@@ -84,9 +87,13 @@
 (add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 ;; For ruby
 (add-hook 'ruby-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+;; For C
+(add-hook 'c-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 ;; For Javascript
-(add-hook 'js2-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-(add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 2)))
+(add-hook 'rjsx-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+;; (add-hook 'rjsx-mode-hook (lambda () (setq rjsx-basic-offset 2)))
+;; fix indentation for C
+(setq c-default-style "linux" c-basic-offset 4)
 
 ;; Turn off js2's syntax checking as we're using flycheck instead
 (setq js2-mode-show-parse-errors nil)
@@ -96,7 +103,7 @@
 
 ;; JS
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-
+(add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
 
 ;; Coffeescript
 (require 'coffee-mode)
@@ -109,9 +116,6 @@
 (setq-default c-basic-offset 2)
 (setq css-indent-offset 2)
 (setq js-indent-level 2)
-(setq web-mode-markup-indent-offset 2)
-(setq web-mode-code-indent-offset 2)
-(setq web-mode-css-indent-offset 2)
 
 ;; YAML
 (require 'yaml-mode)
@@ -205,10 +209,12 @@
   (exec-path-from-shell-initialize))
 
 ;; web-mode setup
-;; (require 'web-mode)
-;; (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(setq web-mode-enable-auto-pairing t)
+(setq web-mode-enable-auto-closing t)
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (defun my-web-mode-hook ()
   "Hooks for Web mode. Adjust indents"
   ;;; http://web-mode.org/
@@ -216,6 +222,8 @@
   (setq web-mode-css-indent-offset 2)
   (setq web-mode-code-indent-offset 2))
 (add-hook 'web-mode-hook  'my-web-mode-hook)
+(eval-after-load "web-mode"
+  '(setq web-mode-tag-auto-close-style 2))
 
 ;; https://stackoverflow.com/questions/3669511/the-function-to-show-current-files-full-path-in-mini-buffer
 (defun show-file-name ()
