@@ -240,24 +240,24 @@
 (setq inhibit-splash-screen t)
 ;; (open-latest-log)
 
-;; Make C-h and such work in insert mode too.
+;; Make M-h and such work in insert mode too.
 (define-key evil-insert-state-map
-            (kbd "C-h")
+            (kbd "M-h")
             (lambda ()
               (interactive)
               (tmux-navigate "left")))
 (define-key evil-insert-state-map
-            (kbd "C-j")
+            (kbd "M-j")
             (lambda ()
               (interactive)
               (tmux-navigate "down")))
 (define-key evil-insert-state-map
-            (kbd "C-k")
+            (kbd "M-k")
             (lambda ()
               (interactive)
               (tmux-navigate "up")))
 (define-key evil-insert-state-map
-            (kbd "C-l")
+            (kbd "M-l")
             (lambda ()
               (interactive)
               (tmux-navigate "right")))
