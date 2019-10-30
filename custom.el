@@ -17,9 +17,14 @@
 (global-set-key "\C-cv" 'revert-buffer)
 (global-set-key (kbd "C-x g") 'magit-status)
 ;; (global-linum-mode 1)
-(setq-default evil-escape-delay 0.2)
-(setq-default evil-escape-case-insensitive-key-sequence 't)
-(setq-default evil-escape-key-sequence "jk")
+
+;; evil-escape (jk to escape)
+;; (setq-default evil-escape-delay 0.2)
+;; (setq-default evil-escape-case-insensitive-key-sequence 't)
+;; (setq-default evil-escape-key-sequence "jk")
+;; (load (concat user-emacs-directory "evil-escape.el"))
+;; (evil-escape-mode 1)
+
 (setq evil-want-C-i-jump nil) ;; makes tab work in org mode
 (setq evil-collection-outline-bind-tab-p nil) ;; don't set shift-tab to show-all in orgmode
 (setq evil-want-integration t)
@@ -27,13 +32,11 @@
 (require 'evil)
 (evil-mode 1)
 
-(load (concat user-emacs-directory "evil-escape.el"))
 (require 'evil-matchit)
 (global-evil-matchit-mode 1)
 
 ;; hitting C-x C-s puts you into normal mode
 (add-hook 'after-save-hook 'evil-normal-state)
-(evil-escape-mode 1)
 (evil-collection-init)
 
 (require 'evil-org)
