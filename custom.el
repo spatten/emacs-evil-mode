@@ -242,22 +242,22 @@
 
 ;; Make M-h and such work in insert mode too.
 (define-key evil-insert-state-map
-            (kbd "M-h")
+            (kbd "C-h")
             (lambda ()
               (interactive)
               (tmux-navigate "left")))
 (define-key evil-insert-state-map
-            (kbd "M-j")
+            (kbd "C-j")
             (lambda ()
               (interactive)
               (tmux-navigate "down")))
 (define-key evil-insert-state-map
-            (kbd "M-k")
+            (kbd "C-k")
             (lambda ()
               (interactive)
               (tmux-navigate "up")))
 (define-key evil-insert-state-map
-            (kbd "M-l")
+            (kbd "C-l")
             (lambda ()
               (interactive)
               (tmux-navigate "right")))
