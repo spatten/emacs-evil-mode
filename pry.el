@@ -3,7 +3,7 @@
   (interactive)
   (save-excursion
     (end-of-line)
-    (insert "\nrequire 'pry'; binding.pry")
+    (insert "\nrequire 'pry-byebug'; binding.pry")
     (indent-according-to-mode)
     ))
 
@@ -12,7 +12,7 @@
   (interactive)
   (save-excursion
     (end-of-line)
-    (insert "\nrequire 'pry'; binding.remote_pry")
+    (insert "\nrequire 'pry-byebug'; binding.remote_pry")
     (indent-according-to-mode)
     ))
 
