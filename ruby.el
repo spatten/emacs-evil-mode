@@ -19,6 +19,22 @@
     (insert (mapconcat 'identity
                        (split-string current-region-string " ") "\n")))
   (evil-indent beg end))
+
+(defun frozen-string-comment ()
+  "makes a frozen_string_literal: true comment"
+  (interactive)
+  (save-excursion
+    (beginning-of-buffer)
+    (insert "# frozen_string_literal: true\n\n"))
+  )
+
+
+(defun ruby-keybindings ()
+  "for use in ruby mode"
+  (local-set-key (kbd "C-c C-c f") 'frozen-string-comment))
+
+(add-hook 'ruby-mode-hook 'ruby-keybindings)
+
 ;; send selected text to your Rails console
 (evil-global-set-key 'visual "gr" 'ruby-send-region)
 (evil-global-set-key 'visual "gR" 'ruby-send-region-and-go)
