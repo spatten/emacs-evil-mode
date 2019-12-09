@@ -8,8 +8,11 @@
 
 ;; default to opening windows with a vertical split
 ;; (setq split-width-threshold 10)
-
 (require 'fringe)
+
+;; Setup solarized for dark mode
+(setq frame-background-mode 'dark)
+(load-theme 'solarized t)
 
 (require 'org)
 (global-set-key "\C-cl" 'org-store-link)
