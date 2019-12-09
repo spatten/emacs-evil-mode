@@ -1,3 +1,7 @@
+;; don't ask if I want to open large files.
+;; I mostly turned this off to avoid the prompt when loading TAGS files
+(setq large-file-warning-threshold nil)
+
 ;; Always able to answer 'y' instead of 'yes'
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq-default indent-tabs-mode nil)
@@ -106,7 +110,9 @@
 
 ;; JS
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
+(add-to-list 'auto-mode-alist '("components\\/.*\\.tsx\\'" . rjsx-mode))
 
 ;; Coffeescript
 (require 'coffee-mode)
