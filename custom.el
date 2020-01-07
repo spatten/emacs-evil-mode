@@ -11,8 +11,8 @@
 (require 'fringe)
 
 ;; Setup solarized for dark mode
-(setq frame-background-mode 'dark)
-(load-theme 'solarized t)
+;; (setq frame-background-mode 'dark)
+;; (load-theme 'solarized t)
 
 (require 'org)
 (global-set-key "\C-cl" 'org-store-link)
