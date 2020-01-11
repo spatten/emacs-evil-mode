@@ -11,7 +11,7 @@
 (require 'fringe)
 
 ;; Setup solarized for dark mode
-;; (setq frame-background-mode 'dark)
+(setq frame-background-mode 'dark)
 ;; (load-theme 'solarized t)
 
 (require 'org)
