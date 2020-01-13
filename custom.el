@@ -113,10 +113,24 @@
 
 ;; JS
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.ts\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 (add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
 (add-to-list 'auto-mode-alist '("components\\/.*\\.tsx\\'" . rjsx-mode))
-
+(flycheck-add-mode 'javascript-eslint 'typescript-mode)
+(use-package typescript-mode
+  :ensure t
+  :config
+  (flycheck-mode +1)
+  (company-mode +1))
+(use-package tide
+  :ensure t
+  :after (typescript-mode)
+  :config
+  (flycheck-add-next-checker 'jsx-tide '(warning . javascript-eslint) 'append)
+  (flycheck-add-next-checker 'tsx-tide '(warning . javascript-eslint) 'append)
+  :hook ((typescript-mode . tide-setup)
+         (typescript-mode . tide-hl-identifier-mode)
+         ))
 ;; Coffeescript
 (require 'coffee-mode)
 ;; This gives you a tab of 2 spaces
@@ -128,7 +142,7 @@
 (setq-default c-basic-offset 2)
 (setq css-indent-offset 2)
 (setq js-indent-level 2)
-
+(setq tide-format-options '(:indentSize 2 :baseIndentSize 0))
 ;; YAML
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
