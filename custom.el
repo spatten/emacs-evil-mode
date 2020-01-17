@@ -101,6 +101,7 @@
 (add-hook 'c-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 ;; For Javascript
 (add-hook 'rjsx-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+(add-hook 'tide-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 ;; (add-hook 'rjsx-mode-hook (lambda () (setq rjsx-basic-offset 2)))
 ;; fix indentation for C
 (setq c-default-style "linux" c-basic-offset 4)
@@ -117,6 +118,8 @@
 (add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
 (add-to-list 'auto-mode-alist '("components\\/.*\\.tsx\\'" . rjsx-mode))
 (flycheck-add-mode 'javascript-eslint 'typescript-mode)
+(setq tide-format-options '(:indentSize 2 :baseIndentSize 0))
+(setq-default typescript-indent-level 2)
 (use-package typescript-mode
   :ensure t
   :config
@@ -142,7 +145,6 @@
 (setq-default c-basic-offset 2)
 (setq css-indent-offset 2)
 (setq js-indent-level 2)
-(setq tide-format-options '(:indentSize 2 :baseIndentSize 0))
 ;; YAML
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
