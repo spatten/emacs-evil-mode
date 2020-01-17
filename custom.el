@@ -5,7 +5,8 @@
 ;; Always able to answer 'y' instead of 'yes'
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq-default indent-tabs-mode nil)
-
+;; don't ask if I can open a symlink to a git controlled file
+(setq vc-follow-symlinks nil)
 ;; default to opening windows with a vertical split
 ;; (setq split-width-threshold 10)
 (require 'fringe)
