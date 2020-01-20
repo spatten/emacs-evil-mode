@@ -118,7 +118,7 @@
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 (add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
 (add-to-list 'auto-mode-alist '("components\\/.*\\.tsx\\'" . rjsx-mode))
-(flycheck-add-mode 'javascript-eslint 'typescript-mode)
+;; (flycheck-add-mode 'javascript-eslint 'typescript-mode)
 (setq tide-format-options '(:indentSize 2 :baseIndentSize 0))
 (setq-default typescript-indent-level 2)
 (use-package typescript-mode
@@ -130,8 +130,9 @@
   :ensure t
   :after (typescript-mode)
   :config
-  (flycheck-add-next-checker 'jsx-tide '(warning . javascript-eslint) 'append)
-  (flycheck-add-next-checker 'tsx-tide '(warning . javascript-eslint) 'append)
+  (flycheck-add-next-checker 'typescript-tide '(t . typescript-tslint) 'append)
+  ;; (flycheck-add-next-checker 'jsx-tide '(warning . javascript-eslint) 'append)
+  ;; (flycheck-add-next-checker 'tsx-tide '(warning . javascript-eslint) 'append)
   :hook ((typescript-mode . tide-setup)
          (typescript-mode . tide-hl-identifier-mode)
          ))
