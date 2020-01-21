@@ -131,42 +131,20 @@
 ;; Workaround for eslint loading slow
 ;; https://github.com/flycheck/flycheck/issues/1129#issuecomment-319600923
 (advice-add 'flycheck-eslint-config-exists-p :override (lambda() t)))
-;; (flycheck-add-mode 'typescript-tslint 'typescript-mode)
-;; (flycheck-add-next-checker 'typescript-mode '(t . typescript-tslint) 'append)
 (defun setup-tide-mode ()
   (interactive)
   (tide-setup)
   (flycheck-mode +1)
   (eldoc-mode +1)
   (tide-hl-identifier-mode +1)
+  (flycheck-add-next-checker 'typescript-tide '(t . typescript-tslint) 'append)
   ;; company is an optional dependency. You have to
   ;; install it separately via package-install
   ;; `M-x package-install [ret] company`
   (company-mode +1))
 ;; aligns annotation to the right hand side
 (setq company-tooltip-align-annotations t)
-;; (add-hook 'typescript-mode-hook #'setup-tide-mode)
-;; (use-package tide
-;;   :ensure t
-;;   :after (typescript-mode)
-;;   :config
-;;   (flycheck-add-next-checker 'typescript-tide '(t . typescript-tslint) 'append)
-;;   ;; (flycheck-add-next-checker 'jsx-tide '(warning . javascript-eslint) 'append)
-;;   ;; (flycheck-add-next-checker 'tsx-tide '(warning . javascript-eslint) 'append)
-;;   :hook ((typescript-mode . tide-setup)
-;;          (typescript-mode . tide-hl-identifier-mode)
-;;          ))
-(use-package tide
-  :ensure t
-  :after (typescript-mode company flycheck)
-  :config
-  (tide-setup)
-  (company-mode +1)
-  (eldoc-mode +1)
-  (tide-hl-identifier-mode +1)
-  (flycheck-add-next-checker 'typescript-tide '(t . typescript-tslint) 'append)
-  :hook ((typescript-mode . tide-setup)
-         (typescript-mode . tide-hl-identifier-mode)))
+(add-hook 'typescript-mode-hook #'setup-tide-mode)
 ;; Coffeescript
 (require 'coffee-mode)
 ;; This gives you a tab of 2 spaces
