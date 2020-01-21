@@ -126,6 +126,27 @@
   :config
   (flycheck-mode +1)
   (company-mode +1))
+(with-eval-after-load 'flycheck
+    (flycheck-add-mode 'javascript-eslint 'typescript-mode)
+;; Workaround for eslint loading slow
+;; https://github.com/flycheck/flycheck/issues/1129#issuecomment-319600923
+(advice-add 'flycheck-eslint-config-exists-p :override (lambda() t)))
+;; (flycheck-add-mode 'typescript-tslint 'typescript-mode)
+;; (flycheck-add-next-checker 'typescript-mode '(t . typescript-tslint) 'append)
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  ;; company is an optional dependency. You have to
+  ;; install it separately via package-install
+  ;; `M-x package-install [ret] company`
+  (company-mode +1))
+;; aligns annotation to the right hand side
+(setq company-tooltip-align-annotations t)
+(add-hook 'typescript-mode-hook #'setup-tide-mode)
 (use-package tide
   :ensure t
   :after (typescript-mode)
@@ -136,6 +157,12 @@
   :hook ((typescript-mode . tide-setup)
          (typescript-mode . tide-hl-identifier-mode)
          ))
+(use-package tide
+  :ensure t
+  :after (typescript-mode company flycheck)
+  :hook ((typescript-mode . tide-setup)
+         (typescript-mode . tide-hl-identifier-mode)
+         (before-save . tide-format-before-save)))
 ;; Coffeescript
 (require 'coffee-mode)
 ;; This gives you a tab of 2 spaces
@@ -237,6 +264,22 @@
 ;; this hopefully sets up path and other vars better
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
+(use-package exec-path-from-shell
+  :ensure t
+  :custom
+  (exec-path-from-shell-check-startup-files nil)
+  :config
+  (push "HISTFILE" exec-path-from-shell-variables)
+  (exec-path-from-shell-initialize))
+
+;; Make sure the local node_modules/.bin/ can be found (for eslint)
+;; https://github.com/codesuki/add-node-modules-path
+(use-package add-node-modules-path
+  :ensure t
+  :config
+  ;; automatically run the function when web-mode starts
+  (eval-after-load 'typescript-mode
+    '(add-hook 'tide-mode-hook 'add-node-modules-path)))
 
 ;; web-mode setup
 (setq web-mode-enable-auto-pairing t)

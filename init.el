@@ -8,7 +8,7 @@
 ; (package-initialize)
 
 ; (defvar my-packages '(paredit color-theme-solarized ido-ubiquitous smex textmate magit pcre2el rust-mode lorem-ipsum haml-mode ruby-mode flymake-ruby ruby-electric web-mode yaml-mode move-text writeroom-mode ruby-hash-syntax dash rubocop exec-path-from-shell))
-(defvar my-packages '(use-package evil color-theme-solarized navigate evil-collection projectile-rails org evil-org xclip rubocop ruby-mode flymake-ruby ruby-electric inf-ruby ruby-hash-syntax evil-surround markdown-mode move-text darkroom magit web-mode ag yaml-mode ripgrep lorem-ipsum haml-mode flycheck coffee-mode rjsx-mode exec-path-from-shell ruby-block evil-matchit vimish-fold systemd ruby-end rspec-mode graphql-mode typescript-mode tide company go-mode))
+(defvar my-packages '(use-package add-node-modules-path evil color-theme-solarized navigate evil-collection projectile-rails org evil-org xclip rubocop ruby-mode flymake-ruby ruby-electric inf-ruby ruby-hash-syntax evil-surround markdown-mode move-text darkroom magit web-mode ag yaml-mode ripgrep lorem-ipsum haml-mode flycheck coffee-mode rjsx-mode exec-path-from-shell ruby-block evil-matchit vimish-fold systemd ruby-end rspec-mode graphql-mode typescript-mode tide company go-mode))
 
 ;; TODO
 
@@ -34,7 +34,7 @@
  '(coffee-tab-width 2)
  '(package-selected-packages
    (quote
-    (go-mode typescript-mode color-theme-sanityinc-solarized ag xclip writeroom-mode web-mode ruby-end ruby-electric rubocop org-evil navigate move-text markdown-mode magit helm flymake-ruby evil-surround evil-rails evil-org evil-escape evil-collection darkroom evil-escape)))
+    (add-node-modules-path go-mode typescript-mode color-theme-sanityinc-solarized ag xclip writeroom-mode web-mode ruby-end ruby-electric rubocop org-evil navigate move-text markdown-mode magit helm flymake-ruby evil-surround evil-rails evil-org evil-escape evil-collection darkroom evil-escape)))
  '(safe-local-variable-values
    (quote
     ((eval progn
