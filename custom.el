@@ -116,8 +116,8 @@
 ;; JS
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
-(add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
-(add-to-list 'auto-mode-alist '("components\\/.*\\.tsx\\'" . rjsx-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . typescript-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
 ;; (flycheck-add-mode 'javascript-eslint 'typescript-mode)
 (setq tide-format-options '(:indentSize 2 :baseIndentSize 0))
 (setq-default typescript-indent-level 2)
