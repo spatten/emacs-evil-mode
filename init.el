@@ -32,6 +32,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(coffee-tab-width 2)
+ '(flycheck-checker-error-threshold 1000)
  '(package-selected-packages
    (quote
     (add-node-modules-path go-mode typescript-mode color-theme-sanityinc-solarized ag xclip writeroom-mode web-mode ruby-end ruby-electric rubocop org-evil navigate move-text markdown-mode magit helm flymake-ruby evil-surround evil-rails evil-org evil-escape evil-collection darkroom evil-escape)))
