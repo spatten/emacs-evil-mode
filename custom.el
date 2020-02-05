@@ -23,9 +23,6 @@
 (setq org-log-done t)
 
 (global-set-key "\C-cv" 'revert-buffer)
-(require 'evil-magit)
-(global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "C-x C-g") 'magit-dispatch)
 
 ;; (global-linum-mode 1)
 
@@ -49,6 +46,10 @@
 ;; hitting C-x C-s puts you into normal mode
 (add-hook 'after-save-hook 'evil-normal-state)
 (evil-collection-init)
+
+(require 'evil-magit)
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x C-g") 'magit-dispatch)
 
 (require 'evil-org)
 (add-hook 'org-mode-hook 'evil-org-mode)
