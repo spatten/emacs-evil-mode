@@ -68,7 +68,7 @@
 (evil-global-set-key 'normal "zv" #'vimish-fold-delete)
 ;; (evil-global-set-key 'normal "z." #'vimish-fold-toggle)
 
-(require 'navigate)
+;; (require 'navigate)
 (projectile-mode +1)
 (define-key projectile-mode-map (kbd "M-p") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
@@ -90,8 +90,8 @@
 ;; rubocop
 (require 'rubocop)
 (add-hook 'ruby-mode-hook 'rubocop-mode)
-(require 'ruby-block)
-(ruby-block-mode t)
+;;(require 'ruby-block)
+;;(ruby-block-mode t)
 (autoload 'inf-ruby-minor-mode "inf-ruby" "Run an inferior Ruby process" t)
 (autoload 'inf-ruby-keys "inf-ruby" "Set local key defs for inf-ruby in ruby-mode")
 (add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
@@ -220,8 +220,7 @@
 (load (concat user-emacs-directory "work-logs.el"))
 (load (concat user-emacs-directory "fanfic.el"))
 (load (concat user-emacs-directory "pry.el"))
-(load (concat user-emacs-directory "navigation.el"))
-(load (concat user-emacs-directory "leanpub.el"))
+(load (concat user-emacs-directory "navigate.el"))
 (load (concat user-emacs-directory "ruby.el"))
 
 ;; make sentence motion work with single-space sentences
