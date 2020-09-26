@@ -167,7 +167,22 @@
 ;; Use OS X copy/paste buffers
 (xclip-mode 1)
 
-;; turn off beeping
+;;Go rename
+(require 'go-rename)
+;; go get github.com/rogpeppe/godef
+;; https://arenzana.org/2019/01/emacs-go-mode/
+(defun go-mode-setup ()
+  ;; run gofmt before saving, but run goimports instead
+  ;; so you get goimports behaviour too
+  (setq gofmt-command "goimports")
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  ;; replace ctags with godef-jump
+  ;; K gives you "godef-describe"
+  (evil-local-set-key 'normal (kbd "C-]" ) #'godef-jump)
+  )
+(add-hook 'go-mode-hook 'go-mode-setup)
+
+; turn off beeping
 (setq ring-bell-function 'ignore)
 ;; Make backup (foo~) files in ~/.emacs-saves
 (setq backup-directory-alist `(("." . "~/.emacs-saves")))
