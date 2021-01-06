@@ -2,6 +2,8 @@
 ;; I mostly turned this off to avoid the prompt when loading TAGS files
 (setq large-file-warning-threshold nil)
 
+;; When editing a file with hard links, don't break the link
+(setq backup-by-copying-when-linked t)
 ;; Always able to answer 'y' instead of 'yes'
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq-default indent-tabs-mode nil)
@@ -47,9 +49,9 @@
 (add-hook 'after-save-hook 'evil-normal-state)
 (evil-collection-init)
 
-(require 'evil-magit)
-(global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "C-x C-g") 'magit-dispatch)
+;; (require 'evil-magit)
+;; (global-set-key (kbd "C-x g") 'magit-status)
+;; (global-set-key (kbd "C-x C-g") 'magit-dispatch)
 
 (require 'evil-org)
 (add-hook 'org-mode-hook 'evil-org-mode)
@@ -181,6 +183,54 @@
   (evil-local-set-key 'normal (kbd "C-]" ) #'godef-jump)
   )
 (add-hook 'go-mode-hook 'go-mode-setup)
+
+;; Turn off the LSP-mode headerline
+(setq lsp-headerline-breadcrumb-enable nil)
+;; Hit "\" for the lsp-mode prefix"
+;; "\ a a" to apply suggestions (M-x lsp-execute-code-action)
+(evil-define-key 'normal lsp-mode-map (kbd "\\") lsp-command-map)
+
+;; go language server, gopls
+;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md
+(use-package lsp-mode
+  :config (lsp-register-custom-settings
+           '(("gopls.completeUnimported" t t)
+             ("gopls.analyses.fieldalignment" t t)
+             ("gopls.staticcheck" t t)))
+  :ensure t
+  :commands (lsp lsp-deferred)
+  :hook (go-mode . lsp-deferred))
+
+;; Set up before-save hooks to format buffer and add/delete imports.
+;; Make sure you don't have other gofmt/goimports hooks enabled.
+(defun lsp-go-install-save-hooks ()
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t))
+(add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+
+;; Optional - provides fancier overlays.
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode)
+
+;; Company mode is a standard completion package that works well with lsp-mode.
+(use-package company
+  :ensure t
+  :config
+  ;; Optionally enable completion-as-you-type behavior.
+  (setq company-idle-delay 0)
+  (setq company-minimum-prefix-length 1))
+
+;; Optional - provides snippet support.
+(use-package yasnippet
+  :ensure t
+  :commands yas-minor-mode
+  :hook (go-mode . yas-minor-mode))
+
+;; custom gopls settings
+;;(lsp-register-custom-settings
+;;'(("gopls.analyses.fieldalignment" t t)
+;;))
 
 ; turn off beeping
 (setq ring-bell-function 'ignore)
