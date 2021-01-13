@@ -35,6 +35,7 @@
 ;; (load (concat user-emacs-directory "evil-escape.el"))
 ;; (evil-escape-mode 1)
 
+
 (setq evil-want-C-i-jump nil) ;; makes tab work in org mode
 (setq evil-collection-outline-bind-tab-p nil) ;; don't set shift-tab to show-all in orgmode
 (setq evil-want-integration t)
@@ -109,6 +110,9 @@
 ;; For Javascript
 (add-hook 'rjsx-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 (add-hook 'tide-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+;; Golang
+
+(add-hook 'go-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 ;; (add-hook 'rjsx-mode-hook (lambda () (setq rjsx-basic-offset 2)))
 ;; fix indentation for C
 (setq c-default-style "linux" c-basic-offset 4)
@@ -381,3 +385,6 @@
             (lambda ()
               (interactive)
               (tmux-navigate "right")))
+
+;; insert code blocks and quotes and such
+(evil-define-key 'normal 'evil-org-mode (kbd "gs") 'org-insert-structure-template)
