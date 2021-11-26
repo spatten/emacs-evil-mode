@@ -23,6 +23,9 @@
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'org-switchb)
 (setq org-log-done t)
+;; indent, but do not hide leading stars
+(setq org-indent-mode-turns-on-hiding-stars nil)
+(setq org-startup-indented 't)
 
 (global-set-key "\C-cv" 'revert-buffer)
 
@@ -56,7 +59,7 @@
 
 (require 'evil-org)
 (add-hook 'org-mode-hook 'evil-org-mode)
-(add-hook 'org-mode-hook (lambda () (setq evil-auto-indent nil)));; this should get rid of the indentation in org mode
+;; (add-hook 'org-mode-hook (lambda () (setq evil-auto-indent nil)));; this should get rid of the indentation in org mode
 (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
 ;; (require 'evil-org-agenda)
 ;; (evil-org-agenda-set-keys)
