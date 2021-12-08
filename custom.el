@@ -126,6 +126,14 @@
 
 (require 'haml-mode)
 
+(require 'rust-mode)
+(add-hook 'rust-mode-hook
+          (lambda () (setq indent-tabs-mode nil)))
+(setq rust-format-on-save t)
+(add-hook 'rust-mode-hook #'lsp)
+(with-eval-after-load 'rust-mode
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+
 ;; JS
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
@@ -180,6 +188,7 @@
 (require 'go-rename)
 ;; go get github.com/rogpeppe/godef
 ;; https://arenzana.org/2019/01/emacs-go-mode/
+;; go install golang.org/x/tools/cmd/goimports@latest
 (defun go-mode-setup ()
   ;; run gofmt before saving, but run goimports instead
   ;; so you get goimports behaviour too
@@ -189,6 +198,7 @@
   ;; K gives you "godef-describe"
   (evil-local-set-key 'normal (kbd "C-]" ) #'godef-jump)
   )
+
 (add-hook 'go-mode-hook 'go-mode-setup)
 
 ;; Turn off the LSP-mode headerline

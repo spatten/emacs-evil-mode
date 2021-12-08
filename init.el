@@ -8,7 +8,7 @@
 ; (package-initialize)
 
 ; (defvar my-packages '(paredit ido-ubiquitous smex textmate magit pcre2el rust-mode lorem-ipsum haml-mode ruby-mode flymake-ruby ruby-electric web-mode yaml-mode move-text writeroom-mode ruby-hash-syntax dash rubocop exec-path-from-shell))
-(defvar my-packages '(use-package add-node-modules-path evil evil-collection projectile-rails org evil-org xclip rubocop ruby-mode flymake-ruby ruby-electric inf-ruby ruby-hash-syntax evil-surround markdown-mode move-text darkroom magit web-mode ag yaml-mode ripgrep lorem-ipsum haml-mode flycheck coffee-mode rjsx-mode exec-path-from-shell evil-matchit vimish-fold systemd ruby-end rspec-mode graphql-mode typescript-mode tide company go-mode go-rename haskell-mode lsp-mode lsp-ui yasnippet))
+(defvar my-packages '(use-package add-node-modules-path evil evil-collection projectile-rails org evil-org xclip rubocop ruby-mode flymake-ruby ruby-electric inf-ruby ruby-hash-syntax evil-surround markdown-mode move-text darkroom magit web-mode ag yaml-mode ripgrep lorem-ipsum haml-mode flycheck coffee-mode rjsx-mode exec-path-from-shell evil-matchit vimish-fold systemd ruby-end rspec-mode graphql-mode typescript-mode tide company go-mode go-rename haskell-mode lsp-mode lsp-ui yasnippet rust-mode flycheck-rust))
 
 ;; TODO
 
@@ -34,7 +34,7 @@
  '(coffee-tab-width 2)
  '(flycheck-checker-error-threshold 1000)
  '(package-selected-packages
-   '(lsp-ui add-node-modules-path go-mode typescript-mode color-theme-sanityinc-solarized ag xclip writeroom-mode web-mode ruby-end ruby-electric rubocop org-evil move-text markdown-mode magit helm flymake-ruby evil-surround evil-rails evil-org evil-escape evil-collection darkroom evil-escape))
+   '(rust-mode lsp-ui add-node-modules-path go-mode typescript-mode color-theme-sanityinc-solarized ag xclip writeroom-mode web-mode ruby-end ruby-electric rubocop org-evil move-text markdown-mode magit helm flymake-ruby evil-surround evil-rails evil-org evil-escape evil-collection darkroom evil-escape))
  '(safe-local-variable-values
    '((eval progn
            (add-to-list 'exec-path
